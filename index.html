@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourist Destination</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: floralwhite;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .nav-links a:hover {
+            transform: scale(1.2);
+        }
+
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?fm=jpg');
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            transform: translateY(-50px);
+            animation: slideDown 1s ease-out forwards;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            transform: translateY(-50px);
+            animation: slideDown 1s 0.5s ease-out forwards;
+        }
+
+        @keyframes slideDown {
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            padding: 4rem 2rem;
+        }
+
+        .destinations {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .destination {
+            text-align: center;
+            width: 30%;
+            padding: 2rem;
+            background-color: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            transform-style: preserve-3d;
+            perspective: 500px;
+            transition: transform 0.4s ease;
+            margin-bottom: 2rem;
+        }
+
+        .destination:hover {
+            transform: rotateY(10deg) rotateX(5deg);
+        }
+
+        .destination-img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .search-bar {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 5px;
+            width: 200px;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        .search-button {
+            padding: 0.5rem;
+            border: none;
+            background-color: #f39c12;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .search-button:hover {
+            background-color: #e67e22;
+        }
+
+        .load-more-btn {
+            display: block;
+            margin: 2rem auto;
+            padding: 1rem 3rem;
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .load-more-btn:hover {
+            background-color: #e67e22;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .destinations {
+                justify-content: center;
+            }
+
+            .destination {
+                width: 45%;
+                margin-bottom: 1.5rem;
+            }
+
+            .search-bar {
+                width: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .destination {
+                width: 100%;
+            }
+
+            .search-bar {
+                width: 120px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                margin-top: 1rem;
+            }
+
+            .nav-links li {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">TravelX</div>
+            <ul class="nav-links">
+                <li><a href="#home" onclick="showSection('home')">Home</a></li>
+                <li><a href="#destinations" onclick="showSection('destinations')">Destinations</a></li>
+                <li><a href="#about" onclick="showSection('about')">About Us</a></li>
+                <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
+            </ul>
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-bar" placeholder="Search destinations...">
+                <button class="search-button" onclick="searchDestinations()">Search</button>
+            </div>
+        </nav>
+    </header>
+    <br>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Explore the World</h1>
+            <p>Discover your next adventure with us!</p>
+        </div>
+    </section>
+
+    <section id="destinations">
+        <h2>Our Popular Destinations</h2>
+        <div id="destinationsContainer" class="destinations"></div>
+        <button class="load-more-btn" onclick="loadMoreDestinations()">Load More</button>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>We are a travel agency offering the best destinations and packages to make your travel dreams come true!</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>If you have any questions, feel free to reach out to us via email at info@travelx.com</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 TravelX by Jayesh Mahawer. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let loadCount = 3; // Number of initial destinations loaded
+        const destinationsData = [
+            {
+                name: "Paris",
+                description: "The city of lights, romance, and culture.",
+                image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?fm=jpg"
+            },
+            {
+                name: "Tokyo",
+                description: "The blend of modernity and tradition.",
+                image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?fm=jpg"
+            },
+            {
+                name: "New York",
+                description: "The city that never sleeps.",
+                image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?fm=jpg"
+            },
+            {
+                name: "London",
+                description: "A city full of history and culture.",
+                image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?fm=jpg"
+            },
+            {
+                name: "Dubai",
+                description: "A city of luxury, shopping, and skyscrapers.",
+                image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?fm=jpg"
+            },
+            {
+                name: "Sydney",
+                description: "A vibrant city with a stunning harbor.",
+                image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?fm=jpg"
+            }
+        ];
+
+        // Initial load of destinations
+        function loadInitialDestinations() {
+            const destinationsContainer = document.getElementById('destinationsContainer');
+            destinationsData.slice(0, loadCount).forEach(destination => {
+                const destinationDiv = document.createElement('div');
+                destinationDiv.classList.add('destination');
+                destinationDiv.innerHTML = `
+                    <img src="${destination.image}" alt="${destination.name}" class="destination-img">
+                    <h2>${destination.name}</h2>
+                    <p>${destination.description}</p>
+                `;
+                destinationsContainer.appendChild(destinationDiv);
+            });
+        }
+
+        // Load more destinations
+        function loadMoreDestinations() {
+            const destinationsContainer = document.getElementById('destinationsContainer');
+            if (loadCount < destinationsData.length) {
+                const newDestination = destinationsData[loadCount];
+                const destinationDiv = document.createElement('div');
+                destinationDiv.classList.add('destination');
+                destinationDiv.innerHTML = `
+                    <img src="${newDestination.image}" alt="${newDestination.name}" class="destination-img">
+                    <h2>${newDestination.name}</h2>
+                    <p>${newDestination.description}</p>
+                `;
+                destinationsContainer.appendChild(destinationDiv);
+                loadCount++;
+            } else {
+                alert('No more destinations available.');
+            }
+        }
+
+        // Search functionality
+        function searchDestinations() {
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+            const destinations = document.querySelectorAll('.destination');
+            destinations.forEach(destination => {
+                const title = destination.querySelector('h2').textContent.toLowerCase();
+                if (title.includes(searchQuery)) {
+                    destination.style.display = 'block';
+                } else {
+                    destination.style.display = 'none';
+                }
+            });
+        }
+
+        // Show specific section when clicking on navbar links
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            const activeSection = document.getElementById(sectionId);
+            activeSection.style.display = 'block';
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadInitialDestinations();
+            showSection('home');  // Show home section initially
+        });
+    </script>
+</body>
+
+</html>
