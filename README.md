@@ -53,7 +53,7 @@ License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 Author: Jayesh Mahawer
-Email: info@travelx.com
+Email: jayeshmahawer@gmail.com
 Year: 2024
 
 
