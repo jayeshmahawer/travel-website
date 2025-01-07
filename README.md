@@ -1,7 +1,5 @@
 # TravelX - Tourist Destination Website
 
-Demo link - https://jayeshmahawer.github.io/travel-website/
-
 TravelX is a responsive web application designed to showcase popular tourist destinations around the world. Users can explore various destinations, search for specific locations, and learn more about travel options.
 
 ## Table of Contents
